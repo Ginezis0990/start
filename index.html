@@ -1,24 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Мой сайт</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Распродажа мебели</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .sale-banner {
+            background: #ff4757;
             text-align: center;
-            margin: 50px;
+            padding: 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        h1 {
-            color: #333;
+
+        .ad-space {
+            background: rgba(255,255,255,0.1);
+            margin: 30px auto;
+            padding: 40px;
+            text-align: center;
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 10px;
+            max-width: 800px;
         }
-        p {
-            color: #666;
+
+        .ad-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffdd59;
+        }
+
+        .ad-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffdd59;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff4757;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .sale-banner {
+                font-size: 1.8rem;
+                padding: 15px;
+            }
+            
+            .ad-space {
+                margin: 20px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Привет!</h1>
-    <p>Это мой простой сайт</p>
-    <p>✉️ email@example.com</p>
+    <div class="sale-banner">
+        РАСПРОДАЖА МЕБЕЛИ
+    </div>
+
+    <div class="ad-space">
+        <div class="ad-title">ЗДЕСЬ МОЖЕТ БЫТЬ ВАША РЕКЛАМА</div>
+        <div class="ad-text">
+            Разместите информацию о ваших лучших предложениях
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="product">
+            <div class="product-name">Диван угловой</div>
+            <div class="old-price">45 990 ₽</div>
+            <div class="product-price">27 590 ₽</div>
+        </div>
+        
+        <div class="product">
+            <div class="product-name">Кровать двуспальная</div>
+            <div class="old-price">32 490 ₽</div>
+            <div class="product-price">19 490 ₽</div>
+        </div>
+        
+        <div class="product">
+            <div class="product-name">Шкаф-купе</div>
+            <div class="old-price">28 790 ₽</div>
+            <div class="product-price">17 270 ₽</div>
+        </div>
+        
+        <div class="product">
+            <div class="product-name">Обеденный стол</div>
+            <div class="old-price">15 990 ₽</div>
+            <div class="product-price">9 590 ₽</div>
+        </div>
+    </div>
 </body>
 </html>
