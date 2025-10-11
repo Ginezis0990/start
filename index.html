@@ -3,136 +3,819 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Распродажа мебели</title>
+    <title>StyleHub - Модная одежда и обувь</title>
     <style>
+        /* Общие стили */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: white;
-        }
-
-        .sale-banner {
-            background: #ff4757;
-            text-align: center;
-            padding: 20px;
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .ad-space {
-            background: rgba(255,255,255,0.1);
-            margin: 30px auto;
-            padding: 40px;
-            text-align: center;
-            border: 2px dashed rgba(255,255,255,0.3);
-            border-radius: 10px;
-            max-width: 800px;
-        }
-
-        .ad-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #ffdd59;
-        }
-
-        .ad-text {
-            font-size: 1.2rem;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
-            margin-bottom: 20px;
         }
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 30px;
+        .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
-        .product {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e83e8c;
+        }
+
+        .logo span {
+            color: #333;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: #e83e8c;
+            color: white;
+            border-radius: 30px;
+            padding: 5px 15px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-icons a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .header-icons i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e83e8c;
+        }
+
+        /* Главный баннер */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e83e8c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d42a7a;
+        }
+
+        /* Категории */
+        .categories {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #e83e8c;
+            margin: 10px auto;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .category-card h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
             text-align: center;
         }
 
-        .product-name {
-            font-size: 1.3rem;
+        /* Популярные товары */
+        .featured-products {
+            padding: 50px 0;
+            background-color: #fff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
             margin-bottom: 10px;
-            color: #ffdd59;
+            font-size: 18px;
         }
 
         .product-price {
-            font-size: 1.5rem;
             font-weight: bold;
-            color: #ff4757;
+            color: #e83e8c;
+            font-size: 20px;
+            margin-bottom: 15px;
         }
 
-        .old-price {
-            text-decoration: line-through;
-            color: #ccc;
-            font-size: 1rem;
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
         }
 
+        .add-to-cart {
+            background-color: #333;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e83e8c;
+        }
+
+        .wishlist {
+            background: none;
+            color: #999;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .wishlist:hover {
+            color: #e83e8c;
+        }
+
+        /* Преимущества */
+        .benefits {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .benefit-icon {
+            font-size: 40px;
+            color: #e83e8c;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Подписка на рассылку */
+        .newsletter {
+            background-color: #333;
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+        }
+
+        .newsletter-form button {
+            background-color: #e83e8c;
+            color: white;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            font-weight: bold;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #e83e8c;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #e83e8c;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        /* Адаптивность */
         @media (max-width: 768px) {
-            .sale-banner {
-                font-size: 1.8rem;
-                padding: 15px;
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
             }
-            
-            .ad-space {
-                margin: 20px;
-                padding: 20px;
+
+            .search-bar {
+                max-width: 100%;
+                margin: 10px 0;
             }
+
+            nav ul {
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 12px;
+            }
+        }
+
+        /* Кнопка Telegram */
+        .telegram-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0088cc;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .telegram-button:hover {
+            transform: scale(1.1);
+            background-color: #0077b5;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="sale-banner">
-        РАСПРОДАЖА МЕБЕЛИ
-    </div>
+    <!-- Кнопка Telegram -->
+    <a href="https://t.me/stalker_ne_odin" class="telegram-button" target="_blank">
+        <i class="fab fa-telegram"></i>
+    </a>
 
-    <div class="ad-space">
-        <div class="ad-title">ЗДЕСЬ МОЖЕТ БЫТЬ ВАША РЕКЛАМА</div>
-        <div class="ad-text">
-            Разместите информацию о ваших лучших предложениях
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo"><span>Style</span>Hub</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Поиск товаров...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-icons">
+                    <a href="#">
+                        <i class="far fa-user"></i>
+                        <span>Профиль</span>
+                    </a>
+                    <a href="#">
+                        <i class="far fa-heart"></i>
+                        <span>Избранное</span>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Корзина</span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Женщинам</a></li>
+                    <li><a href="#">Мужчинам</a></li>
+                    <li><a href="#">Детям</a></li>
+                    <li><a href="#">Обувь</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                    <li><a href="#">Распродажа</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <div class="products">
-        <div class="product">
-            <div class="product-name">Диван угловой</div>
-            <div class="old-price">45 990 ₽</div>
-            <div class="product-price">27 590 ₽</div>
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="container">
+            <h1>Новая коллекция осень-зима 2023</h1>
+            <p>Откройте для себя последние тенденции в моде с нашей эксклюзивной коллекцией. Стиль, комфорт и качество в каждом изделии.</p>
+            <a href="#" class="btn">Смотреть коллекцию</a>
         </div>
-        
-        <div class="product">
-            <div class="product-name">Кровать двуспальная</div>
-            <div class="old-price">32 490 ₽</div>
-            <div class="product-price">19 490 ₽</div>
+    </section>
+
+    <!-- Категории товаров -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Категории товаров</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1539109136883-68d7f6f6b833?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Женская одежда">
+                    <h3>Женская одежда</h3>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мужская одежда">
+                    <h3>Мужская одежда</h3>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Обувь">
+                    <h3>Обувь</h3>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Аксессуары">
+                    <h3>Аксессуары</h3>
+                </div>
+            </div>
         </div>
-        
-        <div class="product">
-            <div class="product-name">Шкаф-купе</div>
-            <div class="old-price">28 790 ₽</div>
-            <div class="product-price">17 270 ₽</div>
+    </section>
+
+    <!-- Популярные товары -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Популярные товары</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Кожаная куртка">
+                    </div>
+                    <div class="product-info">
+                        <h3>Кожаная куртка</h3>
+                        <div class="product-price">12 999 ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">В корзину</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Джинсы">
+                    </div>
+                    <div class="product-info">
+                        <h3>Скинни джинсы</h3>
+                        <div class="product-price">4 299 ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">В корзину</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Кроссовки">
+                    </div>
+                    <div class="product-info">
+                        <h3>Кроссовки Nike</h3>
+                        <div class="product-price">8 799 ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">В корзину</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Футболка">
+                    </div>
+                    <div class="product-info">
+                        <h3>Белая футболка</h3>
+                        <div class="product-price">1 899 ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">В корзину</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Платье">
+                    </div>
+                    <div class="product-info">
+                        <h3>Вечернее платье</h3>
+                        <div class="product-price">6 499 ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">В корзину</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Рюкзак">
+                    </div>
+                    <div class="product-info">
+                        <h3>Городской рюкзак</h3>
+                        <div class="product-price">3 799 ₽</div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">В корзину</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="product">
-            <div class="product-name">Обеденный стол</div>
-            <div class="old-price">15 990 ₽</div>
-            <div class="product-price">9 590 ₽</div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Бесплатная доставка</h3>
+                    <p>Бесплатная доставка при заказе от 3000 рублей по всей России</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>Легкий возврат</h3>
+                    <p>Возврат товара в течение 30 дней без лишних вопросов</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Безопасная оплата</h3>
+                    <p>Оплачивайте покупки безопасно через защищенные платежные системы</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Поддержка 24/7</h3>
+                    <p>Наша служба поддержки всегда готова помочь с любыми вопросами</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Подписка на рассылку -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Подпишитесь на нашу рассылку</h2>
+            <p>Получайте первыми информацию о новых коллекциях, эксклюзивных предложениях и специальных скидках</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Ваш email">
+                <button type="submit">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>StyleHub</h3>
+                    <p>Интернет-магазин модной одежды, обуви и аксессуаров для всей семьи. Мы предлагаем стильные и качественные товары по доступным ценам.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/stalker_ne_odin" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Категории</h3>
+                    <ul>
+                        <li><a href="#">Женская одежда</a></li>
+                        <li><a href="#">Мужская одежда</a></li>
+                        <li><a href="#">Детская одежда</a></li>
+                        <li><a href="#">Обувь</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Размеры</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, 123</li>
+                        <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@stylehub.ru</li>
+                        <li><i class="fas fa-clock"></i> Пн-Вс: 9:00 - 21:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StyleHub. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для добавления товаров в корзину
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.closest('.product-card');
+                const productName = product.querySelector('h3').textContent;
+                const productPrice = product.querySelector('.product-price').textContent;
+                
+                alert(`Товар "${productName}" добавлен в корзину!\nЦена: ${productPrice}`);
+            });
+        });
+
+        // Скрипт для добавления в избранное
+        document.querySelectorAll('.wishlist').forEach(button => {
+            button.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    icon.style.color = '#e83e8c';
+                    alert('Товар добавлен в избранное!');
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    icon.style.color = '';
+                    alert('Товар удален из избранного!');
+                }
+            });
+        });
+
+        // Скрипт для формы подписки
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            if (email) {
+                alert(`Спасибо за подписку! На адрес ${email} будут приходить наши новости и специальные предложения.`);
+                this.querySelector('input').value = '';
+            } else {
+                alert('Пожалуйста, введите ваш email адрес.');
+            }
+        });
+    </script>
 </body>
 </html>
- с
